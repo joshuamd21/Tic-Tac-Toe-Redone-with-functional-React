@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { GameBoard } from "./features/tictactoe/components/GameBoard";
-import { GameInfo } from "./features/tictactoe/components/GameInfo";
+import { GameBoard } from "./components/GameBoard";
+import { GameInfo } from "./components/GameInfo";
 import "./styles.css";
 import { applyMoves, calculateWinner } from "./util/game";
 
