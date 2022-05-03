@@ -12,9 +12,9 @@ export const GameInfo = ({ moves, winner, player, step, onJumpTo }) => {
     <section className="game-info">
       <h3>{status}</h3>
       <MoveList moves={moves} onJumpTo={onJumpTo} />
-      {step !== moves.length && (
+      {/*step !== moves.length && (
         <button onClick={onJumpTo(moves.length)}>Back to Current</button>
-      )}
+      )*/}
     </section>
   );
 };

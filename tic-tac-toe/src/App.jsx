@@ -15,28 +15,37 @@ export default function App() {
     // 1. square is already filled
     // 2. winner is already declared
     // 3. game ended in a draw
-    // 4. viewing a previous game state
     if (
       squares[position] ||
-      winner ||
-      moves.length === 9 ||
-      step !== moves.length
+      winner
     ) {
       return;
     }
-    setSquares((squares) => {
-      squares[position] = player;
-      return squares;
-    });
-    setPlayer((player) => (player === "X" ? "O" : "X"));
-    setMoves((moves) => [...moves, { position, player }]);
-    setStep((step) => step + 1);
+    else if(step < moves.length){
+      setSquares((squares) => {
+        squares[position] = player;
+        return squares;
+      });
+      const newMoves = moves.slice(0, step + 1);
+      setPlayer((player) => (player === "X" ? "O" : "X"));
+      setMoves([...newMoves, { position, player }]);
+      setStep((step) => step + 1);
+    }
+    else{
+      setSquares((squares) => {
+        squares[position] = player;
+        return squares;
+      });
+      setPlayer((player) => (player === "X" ? "O" : "X"));
+      setMoves((moves) => [...moves, { position, player }]);
+      setStep((step) => step + 1);
+    }
   };
   const handleJumpTo = (step) => () => {
     setStep(step);
     const { squares, player } = applyMoves(
       Array(9).fill(null),
-      moves.slice(0, step)
+      moves.slice(0, step + 1)
     );
     setSquares(squares);
     setPlayer(player);
