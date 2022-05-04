@@ -50,6 +50,12 @@ export default function App() {
     setSquares(squares);
     setPlayer(player);
   };
+  const resetGame = () => {
+    setStep(0);
+    setSquares(Array(9).fill(null));
+    setMoves([]);
+    setPlayer('X');
+  };
   return (
     // Fragment short syntax
     <>
@@ -68,7 +74,7 @@ export default function App() {
           moves={moves}
           winner={winner}
           player={player}
-          step={step}
+          resetGame={resetGame}
           onJumpTo={handleJumpTo}
         />
       </main>
